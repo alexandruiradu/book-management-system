@@ -1,7 +1,7 @@
 [BMS-1] Setup Hibernate - DONE
 [BMS-2] Setup DATABASE utility class - DONE
 [BMS-3] Create Hibernate model - DONE
-[BMS-4] Create infrastructure for user menu
+[BMS-4] Create infrastructure for user menu - DONE
 [BMS-5] Create abstract and generic repository
 
 
