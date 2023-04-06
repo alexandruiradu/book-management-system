@@ -21,6 +21,7 @@
     I should be able to specify the following data:
         - id of the author that should be deleted; given data should be positive numeric value and different from 0
     If the provided author id does not exist in the system, the user will be prompted with a message
+    - DONE
 
 [BMS-9] - As a user, I should be able to update an existing author;
     I should be able to specify the following data:
