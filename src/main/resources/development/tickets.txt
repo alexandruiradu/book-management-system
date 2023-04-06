@@ -15,6 +15,7 @@
 [BMS-7] - As a user, I should be able to view the whole list of authors existing in the system;
     Each line will contain author id, author first name and author last name;
     If no author is found in the system, the user will be prompted with a message
+    - DONE
 
 [BMS-8] - As a user, I should be able to delete an author from the list of authors existing in the system;
     I should be able to specify the following data:
