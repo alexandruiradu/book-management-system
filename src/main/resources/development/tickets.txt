@@ -38,6 +38,7 @@
         - author id of the new book; given data should be positive numeric value and different from 0
     If the provided author id does not exist in the system, the user will be prompted with a message
     For any validation problem found, the user will be prompted with a message
+    - DONE
 
 [BMS-11] - As a user, I should be able to view the whole list of books existing in the system;
     Each line will contain id of the book, title of the book, first name of the author and last name of the author;
