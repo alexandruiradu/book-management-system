@@ -68,4 +68,49 @@ public class AuthorServiceImpl implements AuthorService {
 
         authorRepository.delete(authorOptional.get());
     }
+
+    @Override
+    public void update(int id, String firstName, String lastName) {
+        if (id <= 0) {
+            throw new IllegalArgumentException(
+                    "Provided id is negative or 0. Provide a valid value."
+            );
+        }
+
+        if (firstName == null || firstName.isBlank() || firstName.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Provided first name is empty or blank. Provide a valid value."
+            );
+        }
+
+        if (lastName == null || lastName.isBlank() || lastName.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Provided last name is empty or blank. Provide a valid value."
+            );
+        }
+
+        if (!firstName.matches(NAME_VALIDATION_REGEX)) {
+            throw new IllegalArgumentException(
+                    "Provided first name contains invalid characters. Provide a valid value."
+            );
+        }
+
+        if (!lastName.matches(NAME_VALIDATION_REGEX)) {
+            throw new IllegalArgumentException(
+                    "Provided last name contains invalid characters. Provide a valid value."
+            );
+        }
+
+        Optional<Author> authorOptional = authorRepository.findById(id);
+        if (authorOptional.isEmpty()) {
+            throw new EntityNotFoundException(
+                    "Author with provided id was not found in the system."
+            );
+        }
+
+        Author author = authorOptional.get();
+        author.setFirstName(firstName);
+        author.setLastName(lastName);
+        authorRepository.update(author);
+    }
 }

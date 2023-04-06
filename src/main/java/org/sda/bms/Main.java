@@ -36,7 +36,7 @@ public class Main {
                     authorController.create();
                     break;
                 case UPDATE_AUTHOR:
-                    System.out.println("Not implemented");
+                    authorController.updateById();
                     break;
                 case DELETE_AUTHOR:
                     authorController.deleteById();
