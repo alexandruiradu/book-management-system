@@ -56,6 +56,9 @@ public class Main {
                     break;
                 case CREATE_BOOK:
                     bookController.create();
+                case VIEW_ALL_BOOKS:
+                    bookController.displayAll();
+                    break;
                 case UNKNOWN:
                     System.out.println("Please insert a valid option!!!");
                     break;

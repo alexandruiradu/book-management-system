@@ -43,6 +43,7 @@
 [BMS-11] - As a user, I should be able to view the whole list of books existing in the system;
     Each line will contain id of the book, title of the book, first name of the author and last name of the author;
     If no book is found in the system, the user will be prompted with a message
+    - DONE
 
 [BMS-12] - As a user, I should be able to view all the details for a given book;
     I should be able to specify the following data:
