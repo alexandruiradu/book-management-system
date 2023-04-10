@@ -87,4 +87,38 @@ public class BookServiceImpl implements BookService {
         Book book = optionalBook.get();
         bookRepository.delete(book);
     }
+
+    @Override
+    public void updateById(int id, String title, String description) {
+        if (id <= 0) {
+            throw new IllegalArgumentException(
+                    "Provided id is negative or 0. Provide a valid value."
+            );
+        }
+
+        if (title == null || title.isBlank() || title.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Provided first name is empty or blank. Provide a valid value."
+            );
+        }
+
+        if (description == null || description.isBlank() || description.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Provided first name is empty or blank. Provide a valid value."
+            );
+        }
+
+        Optional<Book> optionalBook = bookRepository.findById(id);
+        if (optionalBook.isEmpty()) {
+            throw new EntityNotFoundException(
+                    "Book with provided id was not found in the system."
+            );
+        }
+
+        Book book = optionalBook.get();
+        book.setTitle(title);
+        book.setDescription(description);
+
+        bookRepository.update(book);
+    }
 }

@@ -11,6 +11,7 @@ public enum UserOption {
     VIEW_ALL_BOOKS(6,"View All Books"),
     VIEW_BOOK_BY_ID(7,"View Book By Id"),
     DELETE_BOOK(8,"Delete Book"),
+    UPDATE_BOOK(9,"Update Book"),
     EXIT(99, "Exit"),
     UNKNOWN(9999, "Unknown");
 
