@@ -8,6 +8,7 @@ import org.sda.bms.service.BookService;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class BookController {
@@ -66,5 +67,50 @@ public class BookController {
         } catch (Exception e) {
             System.err.println("Internal server error. Please contact your administrator.");
         }
+    }
+
+    public void displayById() {
+        try {
+            System.out.println("Please provide book id:");
+            int bookId = Integer.parseInt(scanner.nextLine().trim());
+
+            Optional<Book> optionalBook = bookService.findById(bookId);
+            if (optionalBook.isEmpty()) {
+                System.out.println(
+                        "Book was not found in the system."
+                );
+            } else {
+                Book book = optionalBook.get();
+                System.out.println("Id: " + book.getId());
+                System.out.println("Title: " + book.getTitle());
+                System.out.println("Description: " + formatBookDescription(book.getDescription()));
+                System.out.println("Author Id: " + book.getAuthor().getId());
+                System.out.println("Author First Name: " + book.getAuthor().getFirstName());
+                System.out.println("Author Last Name: " + book.getAuthor().getLastName());
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Provided id is not a number. Provide a valid value.");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityFetchingFailedException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error. Please contact your administrator.");
+        }
+    }
+
+    private static String formatBookDescription(String description) {
+        String result = "";
+
+        final int maxNumberOfWords = 5;
+        String[] words = description.split(" ");
+
+        for (int index = 0; index < words.length; index++) {
+            if (index % maxNumberOfWords == 0) {
+                result = result + "\n\t";
+            }
+            result = result + "\s" + words[index];
+        }
+        return result;
     }
 }
