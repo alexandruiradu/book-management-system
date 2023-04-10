@@ -63,6 +63,7 @@
     I should be able to specify the following data:
         - id of the book that should be deleted; given data should be positive numeric value and different from 0
     If the provided book id does not exist in the system, the user will be prompted with a message
+    - DONE
 
 [BMS-14] - As a user, I should be able to update an existing book;
     I should be able to specify the following data:
