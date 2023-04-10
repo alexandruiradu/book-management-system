@@ -80,6 +80,7 @@
         - comment for the specified book; given data should not be empty or blank
     If the provided book id does not exist in the system, the user will be prompted with a message
     For any validation problem found, the user will be prompted with a message
+    - DONE
 
 [BMS-16] - As a user, I should be able to view the whole list of reviews of a book existing in the system;
     I should be able to specify the following data:

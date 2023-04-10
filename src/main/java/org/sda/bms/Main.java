@@ -2,11 +2,14 @@ package org.sda.bms;
 
 import org.sda.bms.controller.AuthorController;
 import org.sda.bms.controller.BookController;
+import org.sda.bms.controller.ReviewController;
 import org.sda.bms.controller.UserOption;
 import org.sda.bms.repository.AuthorRepositoryImpl;
 import org.sda.bms.repository.BookRepositoryImpl;
+import org.sda.bms.repository.ReviewRepositoryImpl;
 import org.sda.bms.service.AuthorServiceImpl;
 import org.sda.bms.service.BookServiceImpl;
+import org.sda.bms.service.ReviewServiceImpl;
 import org.sda.bms.utils.SessionManager;
 
 import java.util.Scanner;
@@ -18,13 +21,22 @@ public class Main {
         // dependencies
         Scanner scanner = new Scanner(System.in);
         AuthorController authorController = new AuthorController(
-                new AuthorServiceImpl(new AuthorRepositoryImpl()),
+                new AuthorServiceImpl(
+                        new AuthorRepositoryImpl()
+                ),
                 scanner
         );
         BookController bookController = new BookController(
                 new BookServiceImpl(
                         new BookRepositoryImpl(),
                         new AuthorRepositoryImpl()
+                ),
+                scanner
+        );
+        ReviewController reviewController = new ReviewController(
+                new ReviewServiceImpl(
+                        new ReviewRepositoryImpl(),
+                        new BookRepositoryImpl()
                 ),
                 scanner
         );
@@ -68,6 +80,9 @@ public class Main {
                     break;
                 case UPDATE_BOOK:
                     bookController.updateById();
+                    break;
+                case CREATE_REVIEW:
+                    reviewController.create();
                     break;
                 case UNKNOWN:
                     System.out.println("Please insert a valid option!!!");
